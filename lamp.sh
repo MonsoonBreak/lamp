@@ -1,5 +1,4 @@
 #!/bin/bash
-./lamp.sh namesite
 sudo apt update
 sudo apt install apache2
 sudo apt install apache2 libapache2-mod-fcgid
@@ -14,6 +13,8 @@ sudo a2ensite default-ssl
 sudo a2enmod alias
 a2enmod rewrite
 mkdir -p /home/yaroslav/www/namesite
+touch  /home/yaroslav/www/namesite/index.php
+echo "<?php phpinfo();" >> /home/yaroslav/www/namesite/index.php
 touch /etc/apache2/site-avalible/namesite.local.conf
 echo "<IfModule mod_ssl.c>
     <VirtualHost *:443>
@@ -49,6 +50,5 @@ echo "<IfModule mod_ssl.c>
     </FilesMatch>
     </VirtualHost>
 </IfModule>" >> namesite.local.conf
-<?php phpinfo();
 sudo service apache2 restart
 service php7.4-fpm restart
