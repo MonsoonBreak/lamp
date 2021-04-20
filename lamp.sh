@@ -1,8 +1,11 @@
 #!/bin/bash
+sudo add-apt-repository ppa:ondrej/php
 sudo apt update
 sudo apt install apache2
 sudo apt install apache2 libapache2-mod-fcgid
-sudo add-apt-repository ppa:ondrej/php
+sudo a2enmod ssl
+sudo a2ensite default-ssl
+sudo a2enmod alias
 sudo a2enmod actions fcgid alias proxy_fcgi
 sudo apt install php7.4 php7.4-fpm
 sudo apt install software-properties-commom
@@ -10,9 +13,6 @@ a2enmod proxy_fcgi setenvif
 a2enconf php7.4-fpm
 sudo apt install mysql-server
 apt install git
-sudo a2enmod ssl
-sudo a2ensite default-ssl
-sudo a2enmod alias
 a2enmod rewrite
 mkdir -p /home/yaroslav/www/namesite
 touch  /home/yaroslav/www/namesite/index.php
