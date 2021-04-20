@@ -9,16 +9,16 @@ sudo a2enmod alias
 sudo a2enmod actions fcgid alias proxy_fcgi
 sudo apt install php7.4 php7.4-fpm
 sudo apt install software-properties-commom
-a2enmod proxy_fcgi setenvif
-a2enconf php7.4-fpm
+sudo a2enmod proxy_fcgi setenvif
+sudo a2enconf php7.4-fpm
 sudo apt install mysql-server
-apt install git
-a2enmod rewrite
-mkdir -p /home/yaroslav/www/namesite
-touch  /home/yaroslav/www/namesite/index.php
-echo "<?php phpinfo();" >> /home/yaroslav/www/namesite/index.php
-touch /etc/apache2/site-avalible/namesite.local.conf
-printf "<IfModule mod_ssl.c>
+sudo apt install git
+sudo a2enmod rewrite
+sudo mkdir -p /home/yaroslav/www/namesite
+sudo touch  /home/yaroslav/www/namesite/index.php
+sudo echo "<?php phpinfo();" >> /home/yaroslav/www/namesite/index.php
+sudo touch /etc/apache2/site-avalible/namesite.local.conf
+sudo printf "<IfModule mod_ssl.c>
     <VirtualHost *:443>
     Protocols h2 http/1.1
     ServerAdmin webmaster@localhost
@@ -53,4 +53,4 @@ printf "<IfModule mod_ssl.c>
     </VirtualHost>
 </IfModule>" >> namesite.local.conf
 sudo service apache2 restart
-service php7.4-fpm restart
+sudo service php7.4-fpm restart
