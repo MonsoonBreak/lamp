@@ -17,7 +17,7 @@ sudo a2enmod rewrite
 sudo mkdir -p /home/yaroslav/www/namesite
 sudo touch  /home/yaroslav/www/namesite/index.php
 sudo echo "<?php phpinfo();" >> /home/yaroslav/www/namesite/index.php
-sudo touch /etc/apache2/site-avalible/namesite.local.conf
+sudo touch /etc/apache2/sites-available/namesite.local.conf
 sudo printf "<IfModule mod_ssl.c>
     <VirtualHost *:443>
     Protocols h2 http/1.1
