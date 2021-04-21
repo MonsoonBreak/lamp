@@ -1,6 +1,7 @@
 #!/bin/bash
 # Get external parameters
 HOST=$1
+USERNAME=$2
 
 # Add new repositories
 sudo add-apt-repository ppa:ondrej/php
@@ -24,16 +25,16 @@ sudo a2enconf php7.4-fpm
 sudo apt install mysql-server
 
 # Create project
-sudo mkdir -p /home/yaroslav/www/${HOST}
-sudo touch  /home/yaroslav/www/${HOST}/index.php
-sudo echo "<?php phpinfo();" >> /home/yaroslav/www/${HOST}/index.php
+sudo mkdir -p /home/${USERNAME}/www/${HOST}
+sudo touch  /home/${USERNAME}/www/${HOST}/index.php
+sudo echo "<?php phpinfo();" >> /home/${USERNAME}/www/${HOST}/index.php
 sudo touch /etc/apache2/sites-available/${HOST}.conf
 sudo printf "<IfModule mod_ssl.c>
     <VirtualHost *:443>
     Protocols h2 http/1.1
     ServerAdmin webmaster@localhost
     ServerName ${HOST}
-    DocumentRoot /home/yaroslav/www/${HOST}
+    DocumentRoot /home/${USERNAME}/www/${HOST}
     ErrorLog \${APACHE_LOG_DIR}/${HOST}-error.log
     CustomLog \${APACHE_LOG_DIR}/${HOST}-access.log combined
 
@@ -52,7 +53,7 @@ sudo printf "<IfModule mod_ssl.c>
     <Directory />
         AllowOverride All
     </Directory>
-    <Directory /home/yaroslav/www/${HOST}>
+    <Directory /home/${USERNAME}/www/${HOST}>
         Options Indexes FollowSymLinks MultiViews
         AllowOverride all
         Require all granted
