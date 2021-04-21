@@ -13,7 +13,7 @@ sudo apt install git
 # Install apache2
 sudo apt install apache2
 sudo apt install apache2 libapache2-mod-fcgid
-sudo a2enmod actions fcgid alias proxy_fcgi ssl setenvif rewrite
+sudo a2enmod actions fcgid alias proxy_fcgi ssl setenvif rewrite http2
 sudo a2ensite default-ssl
 
 # Install PHP
