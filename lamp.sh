@@ -24,18 +24,18 @@ sudo a2enconf php7.4-fpm
 sudo apt install mysql-server
 
 # Create project
-sudo mkdir -p "/home/yaroslav/www/$HOST"
-sudo touch  "/home/yaroslav/www/$HOST/index.php"
-sudo echo "<?php phpinfo();" >> "/home/yaroslav/www/$HOST/index.php"
-sudo touch "/etc/apache2/sites-available/$HOST.conf"
+sudo mkdir -p "/home/yaroslav/www/${HOST}"
+sudo touch  "/home/yaroslav/www/${HOST}/index.php"
+sudo echo "<?php phpinfo();" >> "/home/yaroslav/www/${HOST}/index.php"
+sudo touch "/etc/apache2/sites-available/${HOST}.conf"
 sudo printf "<IfModule mod_ssl.c>
     <VirtualHost *:443>
     Protocols h2 http/1.1
     ServerAdmin webmaster@localhost
-    ServerName $HOST
-    DocumentRoot /home/yaroslav/www/$HOST
-    ErrorLog ${APACHE_LOG_DIR}/$HOST-error.log
-    CustomLog ${APACHE_LOG_DIR}/$HOST-access.log combined
+    ServerName ${HOST}
+    DocumentRoot /home/yaroslav/www/${HOST}
+    ErrorLog ${APACHE_LOG_DIR}/${HOST}-error.log
+    CustomLog ${APACHE_LOG_DIR}/${HOST}-access.log combined
 
     SSLEngine on
 
@@ -52,7 +52,7 @@ sudo printf "<IfModule mod_ssl.c>
     <Directory />
         AllowOverride All
     </Directory>
-    <Directory /home/yaroslav/www/$HOST>
+    <Directory /home/yaroslav/www/${HOST}>
         Options Indexes FollowSymLinks MultiViews
         AllowOverride all
         Require all granted
@@ -61,7 +61,7 @@ sudo printf "<IfModule mod_ssl.c>
     SetHandler \"proxy:unix:/var/run/php/php7.4-fpm.sock|fcgi://localhost/\"
     </FilesMatch>
     </VirtualHost>
-</IfModule>" >> "/etc/apache2/sites-available/$HOST.conf"
+</IfModule>" >> "/etc/apache2/sites-available/${HOST}.conf"
 
 # Restart all
 sudo service apache2 restart
