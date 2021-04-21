@@ -24,10 +24,10 @@ sudo a2enconf php7.4-fpm
 sudo apt install mysql-server
 
 # Create project
-sudo mkdir -p "/home/yaroslav/www/${HOST}"
-sudo touch  "/home/yaroslav/www/${HOST}/index.php"
-sudo echo "<?php phpinfo();" >> "/home/yaroslav/www/${HOST}/index.php"
-sudo touch "/etc/apache2/sites-available/${HOST}.conf"
+sudo mkdir -p /home/yaroslav/www/${HOST}
+sudo touch  /home/yaroslav/www/${HOST}/index.php
+sudo echo "<?php phpinfo();" >> /home/yaroslav/www/${HOST}/index.php
+sudo touch /etc/apache2/sites-available/${HOST}.conf
 sudo printf "<IfModule mod_ssl.c>
     <VirtualHost *:443>
     Protocols h2 http/1.1
@@ -43,7 +43,7 @@ sudo printf "<IfModule mod_ssl.c>
     SSLCertificateKeyFile /etc/ssl/private/ssl-cert-snakeoil.key
     SSLProtocol all -SSLv3 -TLSv1 -TLSv1.1
 
-    <FilesMatch \"(cgi|shtml|phtml|php)\"$>
+    <FilesMatch \"\.(cgi|shtml|phtml|php)$\">
         SSLOptions +StdEnvVars
     </FilesMatch>
     <Directory /usr/lib/cgi-bin>
@@ -61,8 +61,9 @@ sudo printf "<IfModule mod_ssl.c>
     SetHandler \"proxy:unix:/var/run/php/php7.4-fpm.sock|fcgi://localhost/\"
     </FilesMatch>
     </VirtualHost>
-</IfModule>" >> "/etc/apache2/sites-available/${HOST}.conf"
+</IfModule>" >> /etc/apache2/sites-available/${HOST}.conf
 
 # Restart all
+sudo a2ensite mysite.local.conf
 sudo service apache2 restart
 sudo service php7.4-fpm restart
