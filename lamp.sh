@@ -43,7 +43,7 @@ sudo printf "<IfModule mod_ssl.c>
     SSLCertificateKeyFile /etc/ssl/private/ssl-cert-snakeoil.key
     SSLProtocol all -SSLv3 -TLSv1 -TLSv1.1
 
-    <FilesMatch \"(cgi|shtml|phtml|php)\"$>
+    <FilesMatch \"\.(cgi|shtml|phtml|php)$\">
         SSLOptions +StdEnvVars
     </FilesMatch>
     <Directory /usr/lib/cgi-bin>
