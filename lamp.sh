@@ -34,8 +34,8 @@ sudo printf "<IfModule mod_ssl.c>
     ServerAdmin webmaster@localhost
     ServerName ${HOST}
     DocumentRoot /home/yaroslav/www/${HOST}
-    ErrorLog ${APACHE_LOG_DIR}/${HOST}-error.log
-    CustomLog ${APACHE_LOG_DIR}/${HOST}-access.log combined
+    ErrorLog \${APACHE_LOG_DIR}/${HOST}-error.log
+    CustomLog \${APACHE_LOG_DIR}/${HOST}-access.log combined
 
     SSLEngine on
 
