@@ -4,8 +4,8 @@ HOST=$1
 USERNAME=$2
 DATA=$3
 #create project
-sudo mkdir /home/yaroslav/Documents/Projects/${HOST}
-sudo mkdir /home/yaroslav/Documents/ProjectsData/${DATA}
+sudo mkdir /home/${USERNAME}/Documents/Projects/${HOST}
+sudo mkdir /home/${USERNAME}/Documents/ProjectsData/${DATA}
 #create host
 sudo touch /etc/apache2/sites-available/${HOST}.conf
 sudo printf "<IfModule mod_ssl.c>
