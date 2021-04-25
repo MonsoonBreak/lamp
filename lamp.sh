@@ -65,6 +65,6 @@ sudo printf "<IfModule mod_ssl.c>
 </IfModule>" >> /etc/apache2/sites-available/${HOST}.conf
 
 # Restart all
-sudo a2ensite mysite.local.conf
+sudo a2ensite ${HOST}
 sudo service apache2 restart
 sudo service php7.4-fpm restart
